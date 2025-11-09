@@ -112,23 +112,68 @@ document.querySelectorAll('.btn').forEach(button => {
 // Theme switching for teams page
 if (window.location.pathname.includes('teams.html')) {
     const girlsTeamSection = document.querySelector('[data-theme="girls"]');
-    const body = document.body;
+    const navbar = document.querySelector('.navbar');
+    const teamsSection = document.querySelector('.teams-section');
     
-    if (girlsTeamSection) {
+    if (girlsTeamSection && navbar && teamsSection) {
         const themeObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    body.classList.add('girls-theme');
+                    navbar.classList.add('teal-theme');
+                    teamsSection.classList.add('girls-background');
                 } else {
-                    body.classList.remove('girls-theme');
+                    navbar.classList.remove('teal-theme');
+                    teamsSection.classList.remove('girls-background');
                 }
             });
         }, {
-            threshold: 0.3,
-            rootMargin: '-100px 0px -100px 0px'
+            threshold: 0.2,
+            rootMargin: '-50px 0px -50px 0px'
         });
         
         themeObserver.observe(girlsTeamSection);
+    }
+}
+
+// Parallax scroll effect for floating elements
+if (window.location.pathname.includes('index.html') || window.location.pathname === '/') {
+    const floatingElements = document.querySelectorAll('.float-element');
+    
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        
+        floatingElements.forEach((element, index) => {
+            const speed = parseFloat(element.getAttribute('data-speed')) || 0.5;
+            const yPos = scrolled * speed;
+            element.style.transform = `translateY(${yPos}px)`;
+        });
+    });
+    
+    // Awards Modal functionality
+    const awardsButton = document.getElementById('awardsButton');
+    const awardsModal = document.getElementById('awardsModal');
+    const awardsClose = document.getElementById('awardsClose');
+    
+    if (awardsButton && awardsModal && awardsClose) {
+        // Open modal when clicking the awards badge
+        awardsButton.addEventListener('click', function() {
+            awardsModal.classList.add('show');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        // Close modal when clicking the X button
+        awardsClose.addEventListener('click', function() {
+            awardsModal.classList.remove('show');
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Close modal when clicking outside the modal content
+        window.addEventListener('click', function(event) {
+            if (event.target === awardsModal) {
+                awardsModal.classList.remove('show');
+                document.body.style.overflow = 'auto';
+            }
+        });
     }
 }
 
