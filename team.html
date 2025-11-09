@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>What is Robotics? - ICF Robotics Team</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=3">
+    <link rel="stylesheet" href="chatbot.css">
 </head>
 <body>
+    <div id="chatbotWidget"></div>
     <nav class="navbar">
         <div class="nav-container">
             <a href="index.html" class="logo-link">
-                <img src="icf-logo.png" alt="ICF Robotics - Innovate, Compete, Fierce" class="logo-img">
+                <img src="attached_assets/Screenshot 2025-10-26 173558_1761522559322.png" alt="ICF Robotics - Innovate, Compete, Fierce" class="logo-img">
             </a>
             <ul class="nav-menu">
                 <li><a href="index.html" class="nav-link">Home</a></li>
@@ -101,7 +103,7 @@
 
                         <div class="current-season">
                             <h4>🎮 Current Season (2025-2026)</h4>
-                            <p><strong>DECODE™ presented by RTX</strong> - Teams investigate the power of the world's artifacts and unlock mysteries in an archaeology-themed challenge.</p>
+                            <p><a href="https://www.firstinspires.org/robotics/ftc/game-and-season" target="_blank" class="season-link"><strong>DECODE™ presented by RTX</strong></a> - Teams investigate the power of the world's artifacts and unlock mysteries in an archaeology-themed challenge.</p>
                         </div>
                     </div>
                 </div>
@@ -174,7 +176,7 @@
 
                         <div class="current-season">
                             <h4>🎮 Current Season (2025-2026)</h4>
-                            <p><strong>UNEARTHED™</strong> - Teams explore archaeology and history, investigating how we discover and preserve the past.</p>
+                            <p><a href="https://www.firstinspires.org/robotics/fll" target="_blank" class="season-link"><strong>UNEARTHED™</strong></a> - Teams explore archaeology and history, investigating how we discover and preserve the past.</p>
                         </div>
                     </div>
                 </div>
@@ -202,5 +204,15 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        fetch('chatbot.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('chatbotWidget').innerHTML = html;
+                const script = document.createElement('script');
+                script.src = 'chatbot.js';
+                document.body.appendChild(script);
+            });
+    </script>
 </body>
 </html>
