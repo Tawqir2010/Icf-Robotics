@@ -5,12 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ICF Robotics Team - Innovate, Compete, Fierce</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="chatbot.css">
 </head>
 <body>
+    <div id="chatbotWidget"></div>
     <nav class="navbar">
         <div class="nav-container">
             <a href="index.html" class="logo-link">
-                <img src="icf-logo.png" alt="ICF Robotics - Innovate, Compete, Fierce" class="logo-img">
+                <img src="attached_assets/Screenshot 2025-10-26 173558_1761522559322.png" alt="ICF Robotics - Innovate, Compete, Fierce" class="logo-img">
             </a>
             <ul class="nav-menu">
                 <li><a href="index.html" class="nav-link active">Home</a></li>
@@ -29,10 +31,15 @@
     </nav>
 
     <main>
+        <div class="itkahn-corner-logo">
+            <img src="attached_assets/AdobeItkahn_1762017595471.png" alt="ITKAHN">
+        </div>
+        
         <section class="hero">
             <div class="hero-content">
                 <h1>Welcome to <span class="highlight">ICF Robotics</span></h1>
-                <p class="hero-subtitle">Innovate. Compete. Fierce. Inspiring the next generation of engineers and innovators through FIRST Tech Challenge robotics.</p>
+                <p class="hero-slogan"><span class="big-letter">I</span>nnovate, <span class="big-letter">C</span>ompete, <span class="big-letter">F</span>ierce</p>
+                <p class="hero-subtitle">Code it, build it, hype it - there's a spot for you!</p>
                 <div class="hero-stats">
                     <div class="stat-badge">
                         <span class="number">5+</span>
@@ -42,7 +49,7 @@
                         <span class="number">15+</span>
                         <span class="label">Students</span>
                     </div>
-                    <div class="stat-badge">
+                    <div class="stat-badge awards-badge" id="awardsButton">
                         <span class="number">10+</span>
                         <span class="label">Awards</span>
                     </div>
@@ -56,28 +63,24 @@
             <div class="hero-image">
                 <div class="robot-showcase">
                     <div class="robot-placeholder">⚙️🔧</div>
-                    <div class="floating-elements">
-                        <div class="float-element">⚙️</div>
-                        <div class="float-element">🔧</div>
-                        <div class="float-element">💡</div>
-                    </div>
                 </div>
             </div>
         </section>
+        
+        <!-- Fixed decorative elements -->
+        <div class="fixed-decorations">
+            <div class="big-gear">⚙️</div>
+            <div class="big-wrench">🔧</div>
+        </div>
 
         <section class="intro">
             <div class="container">
                 <div class="intro-header">
-                    <h2>Building Tomorrow's Leaders Today</h2>
-                    <p class="intro-lead">At ICF Robotics, we don't just build robots - we build character, confidence, and careers in STEM.</p>
+                    <h2>Our Mission</h2>
+                    <p class="intro-lead">At ICF Robotics, we empower diverse minds to shape a brighter future through innovation, creativity, and compassion. We believe technology should serve humanity, fostering growth, understanding, and positive impact. Our inclusive spaces bring people together and promote lifelong learning. We believe robotics can be a tool not just for competition, but for compassion, growth, and service to humanity. With integrity and community at our core, we envision a world where everyone can contribute, thrive, and make a difference. <b>There's a role for everyone.</b></p>
                 </div>
                 
                 <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">🕌</div>
-                        <h3>Islamic Values</h3>
-                        <p>Integrating Islamic principles with cutting-edge technology and engineering excellence.</p>
-                    </div>
                     <div class="feature-card">
                         <div class="feature-icon">🏆</div>
                         <h3>Competitive Excellence</h3>
@@ -110,6 +113,26 @@
         </section>
     </main>
 
+    <!-- Awards Modal -->
+    <div class="awards-modal" id="awardsModal">
+        <div class="awards-modal-content">
+            <span class="awards-close" id="awardsClose">&times;</span>
+            <h2 class="awards-title">🏆 OUR AWARDS</h2>
+            <div class="no-awards-container">
+                <div class="trophy-loading">
+                    <img src="attached_assets/stock_images/first_tech_challenge_fbbf5f29.jpg" alt="FTC Robot Competition" class="awards-gif">
+                </div>
+                <h3 class="no-awards-title">No Awards Yet!</h3>
+                <p class="no-awards-text">Our teams are working hard and ready to compete. Stay tuned as we bring home the trophies! 🚀</p>
+                <div class="loading-dots">
+                    <span>●</span>
+                    <span>●</span>
+                    <span>●</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <footer class="footer">
         <div class="container">
             <p>&copy; 2024 ICF Robotics Team - Innovate, Compete, Fierce | Contact: robotics@friscomasjid.org</p>
@@ -117,5 +140,15 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        fetch('chatbot.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('chatbotWidget').innerHTML = html;
+                const script = document.createElement('script');
+                script.src = 'chatbot.js';
+                document.body.appendChild(script);
+            });
+    </script>
 </body>
 </html>
